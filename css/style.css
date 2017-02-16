@@ -40,8 +40,13 @@ button {
 	border-radius: 4px;
 	cursor: pointer;
 }
-.figure {
-	position: relative;
+.elWrapper {
+	position: absolute;
+	left: 45%;
+	-webkit-transition: all 500ms ease; /* Firefox */
+	-moz-transition: all 500ms ease; /* WebKit */
+	-o-transition: all 500ms ease; /* Opera */
+	transition: all 500ms ease; /* Standard */
 }
 
 .unit { 

@@ -1,15 +1,15 @@
 // document.createElement();getElementById();getElementsByTagName();getElementsByName();getElementsByClassName();querySelector();querySelectorAll();el.classList.add();el.innerHTML = "";e.style.background = '';el.appendChild();setInterval();setTimeout();clearInterval();
 var matrix = [10, 20];
 var upper = 20; // the heighest element on the ground
-var count = 0;
 var all = matrix[0] * matrix[1];
 var figures = ['square', 'cross', 'halfCross', 'boot', 'deuce'];
 var modes = [[0,0,0,0,0,0,1,1,0,0,1,1], [0,0,1,0,0,1,1,1,0,0,1,0], [0,0,0,0,0,0,1,0,0,1,1,1],
              [0,0,0,0,0,0,0,1,1,1,1,1], [0,0,0,0,0,1,1,0,0,0,1,1], [0,0,0,0,0,0,0,0,1,1,1,1]];
+var elWrapper = document.querySelector('.elWrapper');
 
 getMatrix(20,10);
-setProcess();
-createFigure(modes[setRandom(0, 5)]);
+createFigure(modes[setRandom(0, 5)], elWrapper);
+setProcess(elWrapper);
 //------------------------- ALL FUNCTIONS ------------------
 function getMatrix(num1, num2) {
 	var el = document.querySelector('.main');
@@ -22,12 +22,14 @@ function getMatrix(num1, num2) {
   }
 }
 //-------------------------------------------------
-function setProcess(argument) {
-	console.log();
-	 
-	count++;
-    if(count > upper) {
-
+ var dist = 0;
+ var count = 0;
+function setProcess(elWrapper) {
+	var elWrapper = document.querySelector('.elWrapper');
+  var size = getSize(document.querySelectorAll('.sell')[0]);
+    count++; dist = (count*size-size-size);
+    if(count < upper) {
+     elWrapper.style.top = dist + 'px';
     } else {
 
     }
@@ -39,11 +41,8 @@ function setProcess(argument) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 //--------------------------------------------------
-function createFigure(arr) {
-	var el = document.querySelector('.figure');
+function createFigure(arr, elWrapper) {
 	var size = getSize(document.querySelectorAll('.sell')[0]);
-	size = Number(size.slice(0, size.length - 2));
-	console.log(size)
 	var html = '', count = 0, top = 0, left = 0;
       for (var i = 0; i < 3; i++) {
       	for (var y = 0; y < 4; y++) {
@@ -53,15 +52,19 @@ function createFigure(arr) {
 				  }
       	}
       }
-     console.log(html)
-    el.innerHTML = html;
+    elWrapper.style.top ='-200px';
+    elWrapper.innerHTML = html;
 }
 //--------------------------------------------------
 function getSize(el) {
- var style = getComputedStyle(el); 
- return style.width;
+ var style = getComputedStyle(el);
+ style = style.width;
+ return Number(style.slice(0, style.length - 2));
 }
 //--------------------------------------------------
+function rotate() {
+	elWrapper.style.transform = 'rotate(90deg)';
+}
 //--------------------------------------------------
 //--------------------------------------------------
 //--------------------------------------------------
