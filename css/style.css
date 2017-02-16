@@ -16,8 +16,6 @@ body {
 }
 .sell {
 	background: transparent;
-	/*border: 1px solid #fff;*/
-	/*line-height: 10%;*/
 	vertical-align: middle;
 	height: 5%;
 	width: 10%;
@@ -41,4 +39,14 @@ button {
 	min-width: 50px;
 	border-radius: 4px;
 	cursor: pointer;
+}
+.figure {
+	position: relative;
+}
+
+.unit { 
+   background: url('../img/1.png');
+   background-size: cover;
+  position: absolute;
+  border-radius: 2px;
 }
