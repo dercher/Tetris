@@ -1,8 +1,10 @@
 // document.createElement();getElementById();getElementsByTagName();getElementsByName();getElementsByClassName();querySelector();querySelectorAll();el.classList.add();el.innerHTML = "";e.style.background = '';el.appendChild();setInterval();setTimeout();clearInterval();
 var matrix = [10, 20];
+var upper = 20; // the heighest element on the ground
 var all = matrix[0] * matrix[1];
-getMatrix(20,10)
-
+getMatrix(20,10);
+setProcess()
+//------------------------- ALL FUNCTIONS ------------------
 function getMatrix(num1, num2) {
 	var el = document.querySelector('.main');
 	var count =0;
@@ -13,8 +15,24 @@ function getMatrix(num1, num2) {
   	  el.innerHTML += '<br class="clearfix">';
   }
 }
-var el = document.querySelectorAll('.sell')[0];
- var computedStyle = getComputedStyle(el); 
-        var width = computedStyle.width;
-        var height = computedStyle.height;
-  console.log('width', width, '. height', height);
+//-------------------------------------------------
+function setProcess(argument) {
+  console.log('it goes')
+
+  start = setTimeout(setProcess, 1000);
+}
+//--------------------------------------------------
+//--------------------------------------------------
+//--------------------------------------------------
+//--------------------------------------------------
+//--------------------------------------------------
+//--------------------------------------------------
+//--------------------------------------------------
+//--------------------------------------------------
+//--------------------------------------------------
+//--------------------------------------------------
+//--------------------------------------------------
+//--------------------------------------------------
+//--------------------------------------------------
+//--------------------------------------------------
+

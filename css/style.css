@@ -25,3 +25,20 @@ body {
 	text-align: center;
 	color: #fff;
 }
+.button__wrapper {
+	position: absolute;
+	right: 200px;
+	top: 30%;
+}
+button {
+	margin: 5px;
+	background: #FFEBCD;
+	padding: 8px;
+	font-size: 30px;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 30px;
+	min-width: 50px;
+	border-radius: 4px;
+	cursor: pointer;
+}
