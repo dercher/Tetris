@@ -1,6 +1,6 @@
 // document.createElement();getElementById();getElementsByTagName();getElementsByName();getElementsByClassName();querySelector();querySelectorAll();el.classList.add();el.innerHTML = "";e.style.background = '';el.appendChild();setInterval();setTimeout();clearInterval();
 var matrix = [10, 20];
-var upper = 20; // the heighest element on the ground
+var upper = 21; // the heighest element on the ground
 var all = matrix[0] * matrix[1];
 var figures = ['square', 'cross', 'halfCross', 'boot', 'deuce'];
 var modes = [[0,0,0,0,0,0,1,1,0,0,1,1], [0,0,1,0,0,1,1,1,0,0,1,0], [0,0,0,0,0,0,1,0,0,1,1,1],
@@ -26,14 +26,13 @@ function getMatrix(num1, num2) {
  var count = 0;
 function setProcess(elWrapper) {
 	var elWrapper = document.querySelector('.elWrapper');
-  var size = getSize(document.querySelectorAll('.sell')[0]);
-    count++; dist = (count*size-size-size);
+  var size = getSize(document.querySelectorAll('.sell')[0], 'width');
+    count++; dist = (count*size-size-size-17);
     if(count < upper) {
      elWrapper.style.top = dist + 'px';
     } else {
 
     }
-
   start = setTimeout(setProcess, 1000);
 }
 //--------------------------------------------------
@@ -42,23 +41,28 @@ function setProcess(elWrapper) {
   }
 //--------------------------------------------------
 function createFigure(arr, elWrapper) {
-	var size = getSize(document.querySelectorAll('.sell')[0]);
+  var left1 = getPosition(document.querySelectorAll('.sell')[0]);
+	var size = getSize(document.querySelectorAll('.sell')[0], 'width');
 	var html = '', count = 0, top = 0, left = 0;
+	var color = setRandom(1, 5);
       for (var i = 0; i < 3; i++) {
       	for (var y = 0; y < 4; y++) {
        		if( arr[count++] != 0 ) {
-		        html += '<div class="unit" style="width:'+size+'px; height:'+size+'px;';
-		        html += 'left:'+(y*size)+'px; top:'+(i*size)+'px;"></div>'; 
+		        html += '<img src="img/' +color+ '.png" class="unit" style="width:'+size+'px; height:'+size+'px;';
+		        html += 'left:'+(y*size)+'px; top:'+(i*size)+'px;">'; 
 				  }
       	}
       }
     elWrapper.style.top ='-200px';
+    elWrapper.style.left = (left1 + (size*3)) + 'px';
     elWrapper.innerHTML = html;
 }
 //--------------------------------------------------
-function getSize(el) {
+function getSize(el, property) {
  var style = getComputedStyle(el);
- style = style.width;
+      if(property == 'width')  style = style.width;
+ else if(property == 'left' || property == 'right') style = style.left;
+ else if(property == 'buttom') style = style.top;
  return Number(style.slice(0, style.length - 2));
 }
 //--------------------------------------------------
@@ -66,7 +70,23 @@ function rotate() {
 	elWrapper.style.transform = 'rotate(90deg)';
 }
 //--------------------------------------------------
+function replace(direction) {
+	var pos = getSize(elWrapper, direction);
+	console.log(pos);
+	var size = getSize(document.querySelectorAll('.sell')[0], 'width');
+	console.log(size)
+	if(direction == 'left') elWrapper.style.left = pos - size + 'px';
+	if(direction == 'right') elWrapper.style.left = pos + size + 'px';
+	if(direction == 'buttom') {	
+   count++; dist = (count*size-size-size);
+   elWrapper.style.top = dist + 'px';
+	}
+}
 //--------------------------------------------------
+function getPosition(elem) {
+  var rect = elem.getBoundingClientRect();
+  return rect.left;
+}
 //--------------------------------------------------
 //--------------------------------------------------
 //--------------------------------------------------
