@@ -1,0 +1,27 @@
+.clearfix {
+	display: table;
+	content: " ";
+	clear: both;
+}
+body {
+  background: silver;
+	}
+.main {
+	display: table;
+	margin: auto;
+	padding: 10px;
+	background: green;
+	width: 20vw;
+	height: 40vw;   
+}
+.sell {
+	background: transparent;
+	/*border: 1px solid #fff;*/
+	/*line-height: 10%;*/
+	vertical-align: middle;
+	height: 5%;
+	width: 10%;
+	float: left;
+	text-align: center;
+	color: #fff;
+}
